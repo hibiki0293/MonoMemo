@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A863736A2360523A00BB9968 /* MonoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86373692360523A00BB9968 /* MonoViewController.swift */; };
+		A863736C2362C11E00BB9968 /* Mono.swift in Sources */ = {isa = PBXBuildFile; fileRef = A863736B2362C11E00BB9968 /* Mono.swift */; };
 		A89C6A04235F213800D6C83D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89C6A03235F213800D6C83D /* AppDelegate.swift */; };
 		A89C6A06235F213800D6C83D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89C6A05235F213800D6C83D /* SceneDelegate.swift */; };
 		A89C6A08235F213800D6C83D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89C6A07235F213800D6C83D /* MainViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		A86373692360523A00BB9968 /* MonoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoViewController.swift; sourceTree = "<group>"; };
+		A863736B2362C11E00BB9968 /* Mono.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mono.swift; sourceTree = "<group>"; };
 		A89C6A00235F213800D6C83D /* MonoMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89C6A03235F213800D6C83D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A89C6A05235F213800D6C83D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				A89C6A07235F213800D6C83D /* MainViewController.swift */,
 				A86373692360523A00BB9968 /* MonoViewController.swift */,
 				A89C6A09235F213800D6C83D /* Main.storyboard */,
+				A863736B2362C11E00BB9968 /* Mono.swift */,
 				A89C6A0C235F213800D6C83D /* Assets.xcassets */,
 				A89C6A0E235F213800D6C83D /* LaunchScreen.storyboard */,
 				A89C6A11235F213800D6C83D /* Info.plist */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A863736C2362C11E00BB9968 /* Mono.swift in Sources */,
 				A89C6A08235F213800D6C83D /* MainViewController.swift in Sources */,
 				A89C6A04235F213800D6C83D /* AppDelegate.swift in Sources */,
 				A89C6A06235F213800D6C83D /* SceneDelegate.swift in Sources */,

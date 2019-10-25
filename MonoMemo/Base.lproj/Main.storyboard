@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vcp-ug-yyf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -24,7 +24,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="plus" catalog="system"/>
                                         <connections>
-                                            <segue destination="vcp-ug-yyf" kind="presentation" id="xi5-Nt-ISn"/>
+                                            <segue destination="vcp-ug-yyf" kind="presentation" modalTransitionStyle="crossDissolve" id="xi5-Nt-ISn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -57,6 +57,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="保存"/>
+                                        <connections>
+                                            <action selector="CreateMono:" destination="vcp-ug-yyf" eventType="touchUpInside" id="wDj-RI-5Ye"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="au2-v1-4er">
                                         <rect key="frame" x="8" y="9" width="30" height="36"/>
@@ -111,10 +114,24 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="l2v-FW-Tkc"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="3sm-ue-yRb" appends="YES" id="esi-8x-mQ2"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="monoDetail" destination="X0K-wm-OyG" id="0bD-eN-Krg"/>
+                        <outlet property="monoKazu" destination="HSs-Jc-ezG" id="EIR-jP-yqk"/>
+                        <outlet property="monoName" destination="GFu-0F-CcY" id="ZBM-vp-44k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JlQ-HD-Ldw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3sm-ue-yRb">
+                    <connections>
+                        <action selector="tapView:" destination="vcp-ug-yyf" id="Hkj-0c-uP6"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1098.75" y="-432.04225352112678"/>
         </scene>
