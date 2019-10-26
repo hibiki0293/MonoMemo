@@ -9,7 +9,7 @@
 import UIKit
 
 class MonoViewController: UIViewController {
-    
+    var MonoNum = 1
     @IBOutlet weak var monoName: UITextField!
     @IBOutlet weak var monoKazu: UITextField!
     @IBOutlet weak var monoDetail: UITextField!
@@ -19,9 +19,15 @@ class MonoViewController: UIViewController {
     @IBAction func CreateMono(_ sender: UIButton) {
         let kazu = Int(monoKazu.text!)
         let mono = Mono()
+        mono.id = MonoNum
         mono.name = monoName.text!
         mono.kazu = kazu!
         mono.detail = monoDetail.text!
+        let defaults = UserDefaults.standard
+        let MonoId = String(MonoNum)
+        let sendMono: NSData = NSKeyedArchiver.archivedData(withRootObject: mono) as NSData
+        defaults.set(sendMono, forKey: MonoId)
+        MonoNum += 1
     }
     
     override func viewDidLoad() {

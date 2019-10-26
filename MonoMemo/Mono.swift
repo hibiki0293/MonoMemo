@@ -7,7 +7,8 @@
 //
 
 import Foundation
-class Mono{
+class Mono: NSObject{
+    var id:Int = 0
     var name:String = ""
     var kazu:Int = 0
     var detail:String = ""
