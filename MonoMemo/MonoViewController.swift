@@ -7,10 +7,10 @@
 //
 
 import UIKit
+var MonoNum = 1
+var monos = [Mono]()
 
 class MonoViewController: UIViewController {
-    var MonoNum = 1
-    var monos = [Mono]()
     let defaults = UserDefaults.standard
     @IBOutlet weak var monoName: UITextField!
     @IBOutlet weak var monoKazu: UITextField!
