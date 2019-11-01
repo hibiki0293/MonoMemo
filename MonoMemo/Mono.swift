@@ -27,9 +27,9 @@ class Mono: NSObject,NSCoding{
         aCoder.encode(self.name,forKey: "name")
 }
     required init?(coder aDecoder: NSCoder) {
-        id = aDecoder.decodeObject(forKey: "id") as! Int
-        detail = aDecoder.decodeObject(forKey: "detail") as! String
-        kazu = aDecoder.decodeObject(forKey: "kazu") as! Int
-        name = aDecoder.decodeObject(forKey: "name") as! String
+        self.id = aDecoder.decodeInteger(forKey: "id")
+        self.detail = aDecoder.decodeObject(forKey: "detail") as! String
+        self.kazu = aDecoder.decodeInteger(forKey: "kazu")
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
     }
 }

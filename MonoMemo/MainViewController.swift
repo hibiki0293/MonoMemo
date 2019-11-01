@@ -11,7 +11,6 @@ import UIKit
 class MainViewController: UIViewController {
     
     @IBAction func testAction(_ sender: Any){
-    
         var count = monos.count
          while (count > 0){
              let num = String(count)

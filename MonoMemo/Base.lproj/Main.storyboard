@@ -27,6 +27,14 @@
                                             <segue destination="vcp-ug-yyf" kind="presentation" modalTransitionStyle="crossDissolve" id="xi5-Nt-ISn"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRd-kd-HrD">
+                                        <rect key="frame" x="8" y="9" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="testAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GQX-63-0Xk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -131,9 +139,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="l2v-FW-Tkc"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="3sm-ue-yRb" appends="YES" id="esi-8x-mQ2"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="monoDetail" destination="X0K-wm-OyG" id="0bD-eN-Krg"/>
@@ -142,11 +147,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JlQ-HD-Ldw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="3sm-ue-yRb">
-                    <connections>
-                        <action selector="tapView:" destination="vcp-ug-yyf" id="Hkj-0c-uP6"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1098.75" y="-432.04225352112678"/>
         </scene>
