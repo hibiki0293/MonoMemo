@@ -8,8 +8,6 @@
 
 import UIKit
 var MonoNum = 1
-var monos = [Mono]()
-
 class MonoViewController: UIViewController {
     let defaults = UserDefaults.standard
     @IBOutlet weak var monoName: UITextField!
@@ -19,13 +17,16 @@ class MonoViewController: UIViewController {
         view.endEditing(true)
     }
     @IBAction func CreateMono(_ sender: UIButton) {
+        if MonoNum != 1{
+        MonoNum = defaults.integer(forKey: "Mononum")
+        }
         let kazu = Int(monoKazu.text!)
         let mono = Mono(MonoNum, monoName.text!, kazu!, monoDetail.text!)
         let MonoId = String(MonoNum)
         let sendMono = try! NSKeyedArchiver.archivedData(withRootObject: mono, requiringSecureCoding: false)
         defaults.set(sendMono, forKey: MonoId)
-        monos.append(mono)
         MonoNum += 1
+        defaults.set(MonoNum, forKey: "Mononum")
     }
     
     override func viewDidLoad() {

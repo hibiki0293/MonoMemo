@@ -11,7 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     @IBAction func testAction(_ sender: Any){
-        var count = monos.count
+        var count = UserDefaults.standard.integer(forKey: "Mononum")
          while (count > 0){
              let num = String(count)
              let data = UserDefaults.standard.object(forKey: num)
