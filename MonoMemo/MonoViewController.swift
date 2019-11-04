@@ -8,11 +8,13 @@
 
 import UIKit
 var MonoNum = 1
+var sectionTitle:[String] = [] //mainViewのテーブルで使用
 class MonoViewController: UIViewController {
     let defaults = UserDefaults.standard
     @IBOutlet weak var monoName: UITextField!
     @IBOutlet weak var monoKazu: UITextField!
     @IBOutlet weak var monoDetail: UITextField!
+    @IBOutlet weak var monoAffiliation: UITextField!
     @IBAction func tapView(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
@@ -21,12 +23,17 @@ class MonoViewController: UIViewController {
         MonoNum = defaults.integer(forKey: "Mononum")
         }
         let kazu = Int(monoKazu.text!)
-        let mono = Mono(MonoNum, monoName.text!, kazu!, monoDetail.text!)
+        let mono = Mono(MonoNum, monoName.text!, kazu!, monoDetail.text!, monoAffiliation.text!)
         let MonoId = String(MonoNum)
         let sendMono = try! NSKeyedArchiver.archivedData(withRootObject: mono, requiringSecureCoding: false)
         defaults.set(sendMono, forKey: MonoId)
         MonoNum += 1
-        defaults.set(MonoNum, forKey: "Mononum")
+        let IndexNo = sectionTitle.index(of: monoAffiliation.text!)
+        if IndexNo == nil{
+            sectionTitle.append(monoAffiliation.text!)
+        }
+        defaults.set(sectionTitle, forKey: "sectionTitle")
+        defaults.set(MonoNum, forKey: "Mononum") //登録されたものの個数をKey:"Mononum"で保存
     }
     
     override func viewDidLoad() {
