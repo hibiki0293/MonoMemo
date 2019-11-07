@@ -9,26 +9,27 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+    let defaults = UserDefaults.standard
     @IBOutlet weak var monoTableView: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return UserDefaults.standard.integer(forKey: "Mononum")
+        let sectionData = tableData[section]
+        return sectionData.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
     }
     func numberOfSections(in tableView: UITableView) -> Int{
-        return UserDefaults.standard.array(forKey: "sectionTitle")!.count
+        return defaults.array(forKey: "sectionTitle")!.count
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
-        
+        return sectionTitle[section]
     }
 
     @IBAction func testAction(_ sender: Any){
-        var count = UserDefaults.standard.integer(forKey: "Mononum")
+        var count = defaults.integer(forKey: "Mononum")
          while (count > 0){
              let num = String(count)
-             let data = UserDefaults.standard.object(forKey: num)
+             let data = defaults.object(forKey: num)
              let mono: Mono = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! Mono
             
              count -= 1
@@ -41,6 +42,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
         monoTableView.delegate = self
         monoTableView.dataSource = self
+        //全てのsectionが入った配列tableDataを定義
+        var tableData:[[String]] = []
+        let sectionTitle = defaults.array(forKey: "sectionTitle") as! [String]
+        for title in sectionTitle{
+            let section = defaults.array(forKey: title) as! [String]
+            tableData.append(section)
+        }
     }
 }
 
