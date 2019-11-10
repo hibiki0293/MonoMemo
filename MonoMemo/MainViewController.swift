@@ -25,7 +25,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell!
     }
     func numberOfSections(in tableView: UITableView) -> Int{
-        return defaults.array(forKey: "sectionTitle")!.count
+        return defaults.array(forKey: "sectionTitle")?.count ?? 0
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
         return sectionTitle[section]
@@ -37,7 +37,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
              let num = String(count)
              let data = defaults.object(forKey: num)
              let mono: Mono = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! Mono
-            
              count -= 1
          }
     }
@@ -49,6 +48,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         monoTableView.delegate = self
         monoTableView.dataSource = self
         //全てのsectionが入った配列tableDataを定義、保存
+        if defaults.array(forKey: "sectionTitle") != nil{
         var tableData:[[String]] = []
         let sectionTitle = defaults.array(forKey: "sectionTitle") as! [String]
         for title in sectionTitle{
@@ -57,5 +57,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         defaults.set(tableData, forKey: "tableData")
     }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           //destinationのクラッシュ防ぐ
+           if segue.identifier == "toDetail"{
+               //detailViewControllerを取得
+               //as! DetailViewControllerでダウンキャストしている
+               let detailViewController = segue.destination as! DetailViewController
+               //遷移前に選ばれているCellが取得できる
+               let selectedMonoName = monoTableView.indexPathForSelectedRow! as! String
+               detailViewController.selectedMonoName = selectedMonoName
+           }
+       }
 }
 
