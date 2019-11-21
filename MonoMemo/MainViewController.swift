@@ -32,18 +32,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     @IBAction func testAction(_ sender: Any){
-        //userdefaultsを全て削除
-//        let appDomain = Bundle.main.bundleIdentifier
-//        defaults.removePersistentDomain(forName: appDomain!)
-//       一つ一つのMonoを取り出す処理
-        var count = defaults.integer(forKey: "Mononum")
-         while (count > 0){
-             let num = String(count)
-             let data = defaults.object(forKey: num)
-             let mono: Mono = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! Mono
-            print(mono.name)
-             count -= 1
-         }
+        //       一つ一つのMonoを取り出す処理
+//        var count = defaults.integer(forKey: "Mononum")
+//         while (count > 0){
+//             let num = String(count)
+//             let data = defaults.object(forKey: num)
+//             let mono: Mono = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! Mono
+//            print(mono.name)
+//             count -= 1
+//         }
     }
     
     override func viewDidLoad() {
