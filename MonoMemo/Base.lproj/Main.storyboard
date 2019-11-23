@@ -23,6 +23,14 @@
                                     <action selector="deleteUserdefaults:" destination="aPf-cH-UUK" eventType="touchUpInside" id="hcu-XH-Q1U"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZV-vK-ZAl">
+                                <rect key="frame" x="100" y="253" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="確認ボタン"/>
+                                <connections>
+                                    <action selector="confirm:" destination="aPf-cH-UUK" eventType="touchUpInside" id="XeL-ka-7VA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hNJ-kz-YVP"/>
@@ -259,6 +267,12 @@
                         <viewLayoutGuide key="safeArea" id="e09-Fk-gym"/>
                     </view>
                     <navigationItem key="navigationItem" id="BgG-fE-aVi"/>
+                    <connections>
+                        <outlet property="monoAffiliation" destination="A9y-n4-klB" id="P44-x4-por"/>
+                        <outlet property="monoDetail" destination="SpV-Wi-801" id="0tM-UN-AfK"/>
+                        <outlet property="monoKazu" destination="hEp-wM-lxO" id="QJ3-ci-uKc"/>
+                        <outlet property="monoName" destination="AIE-HW-9rM" id="9eb-nX-ftL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bf6-Di-qeB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

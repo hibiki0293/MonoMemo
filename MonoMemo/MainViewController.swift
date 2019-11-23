@@ -9,6 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var giveData:String = ""
     let defaults = UserDefaults.standard
     @IBOutlet weak var monoTableView: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -28,8 +29,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return defaults.array(forKey: "sectionTitle")?.count ?? 0
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
+        let sectionTitle = defaults.array(forKey: "sectionTitle") as! [String]
         return sectionTitle[section]
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let table = defaults.array(forKey: "tableData") as! [[String]]
+        giveData = table[indexPath.section][indexPath.row]
+        self.performSegue(withIdentifier: "toDetail", sender: nil)
+        //押したら押した状態を解除
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
 
     @IBAction func testAction(_ sender: Any){
         //       一つ一つのMonoを取り出す処理
@@ -59,6 +69,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         defaults.set(tableData, forKey: "tableData")
     }
     }
+    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            //destinationのクラッシュ防ぐ
            if segue.identifier == "toDetail"{
@@ -66,8 +78,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                //as! DetailViewControllerでダウンキャストしている
                let detailViewController = segue.destination as! DetailViewController
                //遷移前に選ばれているCellが取得できる
-               let selectedMonoName = monoTableView.indexPathForSelectedRow! as! String
-               detailViewController.selectedMonoName = selectedMonoName
+            detailViewController.selectedMonoName = giveData
            }
        }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A852D46F2377F52400E0EF4E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A852D46E2377F52400E0EF4E /* DetailViewController.swift */; };
+		A852D4712386C54500E0EF4E /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A852D4702386C54500E0EF4E /* DebugViewController.swift */; };
 		A863736A2360523A00BB9968 /* MonoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86373692360523A00BB9968 /* MonoViewController.swift */; };
 		A863736C2362C11E00BB9968 /* Mono.swift in Sources */ = {isa = PBXBuildFile; fileRef = A863736B2362C11E00BB9968 /* Mono.swift */; };
 		A89C6A04235F213800D6C83D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89C6A03235F213800D6C83D /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		A852D46E2377F52400E0EF4E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A852D4702386C54500E0EF4E /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		A86373692360523A00BB9968 /* MonoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoViewController.swift; sourceTree = "<group>"; };
 		A863736B2362C11E00BB9968 /* Mono.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mono.swift; sourceTree = "<group>"; };
 		A89C6A00235F213800D6C83D /* MonoMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,7 @@
 				A89C6A05235F213800D6C83D /* SceneDelegate.swift */,
 				A89C6A07235F213800D6C83D /* MainViewController.swift */,
 				A86373692360523A00BB9968 /* MonoViewController.swift */,
+				A852D4702386C54500E0EF4E /* DebugViewController.swift */,
 				A89C6A09235F213800D6C83D /* Main.storyboard */,
 				A852D46E2377F52400E0EF4E /* DetailViewController.swift */,
 				A863736B2362C11E00BB9968 /* Mono.swift */,
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A863736C2362C11E00BB9968 /* Mono.swift in Sources */,
+				A852D4712386C54500E0EF4E /* DebugViewController.swift in Sources */,
 				A89C6A08235F213800D6C83D /* MainViewController.swift in Sources */,
 				A89C6A04235F213800D6C83D /* AppDelegate.swift in Sources */,
 				A852D46F2377F52400E0EF4E /* DetailViewController.swift in Sources */,
