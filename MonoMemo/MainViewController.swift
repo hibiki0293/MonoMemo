@@ -59,6 +59,48 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         //押したら押した状態を解除
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    //セルの編集許可
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+
+    //スワイプで削除
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let table = defaults.array(forKey: "tableData") as! [[String]]
+            let deleteMonoName = table[indexPath.section][indexPath.row]
+            print(deleteMonoName)
+            //monoの分類名を取得
+            let data = defaults.object(forKey: deleteMonoName)
+            let mono: Mono = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! Mono
+            let sectionName = mono.affiliation
+            //Monoそのものを削除
+            defaults.removeObject(forKey: deleteMonoName)
+            //nameListを削除し、更新
+            var nameList = defaults.array(forKey: "nameList") as! [String]
+            let deleteNameIndex = nameList.index(of: deleteMonoName) ?? 0
+            nameList.remove(at: deleteNameIndex)
+            defaults.set(nameList, forKey: "nameList")
+            //該当するsectionから削除
+            var section = defaults.array(forKey: sectionName) as! [String]
+            let deleteSectionIndex = section.index(of: sectionName) ?? 0
+            section.remove(at: deleteSectionIndex)
+        //削除しするものに該当するsectionが空になる場合、そのsectionを削除する
+            if section == []{
+                defaults.removeObject(forKey: sectionName)
+                //sectionTitleからsection名を削除
+                let deleteTitleIndex = sectionTitle.index(of: sectionName) ?? 0
+                sectionTitle.remove(at: deleteTitleIndex)
+            }else{
+                defaults.set(section,forKey: sectionName)
+            }
+            //反映
+             loadTable()
+             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+           
+        }
+    }
 
 
     @IBAction func testAction(_ sender: Any){
@@ -80,16 +122,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         monoTableView.dataSource = self
         monoSearchBar.delegate = self
         monoSearchBar.showsCancelButton = true
-        //全てのsectionが入った配列tableDataを定義、保存
-        if defaults.array(forKey: "sectionTitle") != nil{
-        var tableData:[[String]] = []
-        let sectionTitle = defaults.array(forKey: "sectionTitle") as! [String]
-        for title in sectionTitle{
-            let section = defaults.array(forKey: title) as! [String]
-            tableData.append(section)
-        }
-        defaults.set(tableData, forKey: "tableData")
+        loadTable()
     }
+    
+    func loadTable(){
+        //全てのsectionが入った配列tableDataを定義、保存
+              if defaults.array(forKey: "sectionTitle") != nil{
+              var tableData:[[String]] = []
+              let sectionTitle = defaults.array(forKey: "sectionTitle") as! [String]
+              for title in sectionTitle{
+                  let section = defaults.array(forKey: title) as! [String]
+                  tableData.append(section)
+              }
+              defaults.set(tableData, forKey: "tableData")
+          }
     }
     
 
