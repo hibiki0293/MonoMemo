@@ -18,11 +18,16 @@ class DebugViewController: UIViewController{
     @IBAction func confirm(_ sender: Any) {
         //tableの中身を確認
         let table = defaults.array(forKey: "tableData") as! [[String]]
-        let title = defaults.array(forKey: "sectionTitle") as! [String]
+        let titles = defaults.array(forKey: "sectionTitle") as! [String]
         let names = defaults.array(forKey: "nameList") as! [String]
         print(table)
-        print(title)
+        print(titles)
         print(names)
+        for title in titles{
+            let sectionKey = title + "Section"
+            let section = defaults.array(forKey: sectionKey) as! [String]
+            print(section)
+        }
     }
     override func viewDidLoad() {
            super.viewDidLoad()

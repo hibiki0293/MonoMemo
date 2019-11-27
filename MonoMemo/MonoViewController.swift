@@ -41,14 +41,17 @@ class MonoViewController: UIViewController {
             defaults.set(nameList, forKey: "nameList")//nameListを保存
             //配列sectionTitle中に、monoAffiliationがなかった場合は新たにkey:affiliationのsectionを作り、あった場合は既存のsectionを読み込みappendし、上書き保存する。
             let titleIndexNo = sectionTitle.index(of: monoAffiliation.text!)
+            //section名と同名のものがあった場合のkeyの重複を防ぐため、key名を変更
+            let sectionKey = monoAffiliation.text! + "Section"
             if titleIndexNo == nil{
                 sectionTitle.append(monoAffiliation.text!)
                 let section = [mono.name]
-                defaults.set(section, forKey: monoAffiliation.text!)
+                
+                defaults.set(section, forKey: sectionKey)
             }else{
-                var section:[String] = defaults.array(forKey: monoAffiliation.text!) as! [String]
+                var section:[String] = defaults.array(forKey: sectionKey) as! [String]
                 section.append(monoName.text!)
-                defaults.set(section, forKey: monoAffiliation.text!)
+                defaults.set(section, forKey: sectionKey)
             }
             defaults.set(sectionTitle, forKey: "sectionTitle")//sectionのタイトル（affiliation)の配列を保存
                    defaults.set(MonoNum, forKey: "Mononum") //登録されたものの個数をKey:"Mononum"で保存

@@ -75,30 +75,37 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let data = defaults.object(forKey: deleteMonoName)
             let mono: Mono = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! Mono
             let sectionName = mono.affiliation
+            let sectionKey = sectionName + "Section"
             //Monoそのものを削除
             defaults.removeObject(forKey: deleteMonoName)
-            //nameListを削除し、更新
+            //nameListから該当する名前を削除し、更新
             var nameList = defaults.array(forKey: "nameList") as! [String]
             let deleteNameIndex = nameList.index(of: deleteMonoName) ?? 0
             nameList.remove(at: deleteNameIndex)
             defaults.set(nameList, forKey: "nameList")
             //該当するsectionから削除
-            var section = defaults.array(forKey: sectionName) as! [String]
-            let deleteSectionIndex = section.index(of: sectionName) ?? 0
+            var section = defaults.array(forKey: sectionKey) as! [String]
+            let deleteSectionIndex = section.index(of: deleteMonoName) ?? 0
             section.remove(at: deleteSectionIndex)
         //削除しするものに該当するsectionが空になる場合、そのsectionを削除する
             if section == []{
-                defaults.removeObject(forKey: sectionName)
+                defaults.removeObject(forKey: sectionKey)
                 //sectionTitleからsection名を削除
+                var sectionTitle = defaults.array(forKey: "sectionTitle") as! [String]
                 let deleteTitleIndex = sectionTitle.index(of: sectionName) ?? 0
                 sectionTitle.remove(at: deleteTitleIndex)
+                defaults.set(sectionTitle, forKey: "sectionTitle")
             }else{
-                defaults.set(section,forKey: sectionName)
+                defaults.set(section,forKey: sectionKey)
             }
             //反映
              loadTable()
              tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-           
+            //sectionをtableviewから削除
+            if section == []{
+                let indexSet = NSMutableIndexSet()
+                tableView.deleteSections(indexSet as IndexSet, with: UITableView.RowAnimation.automatic)
+            }
         }
     }
 
@@ -131,7 +138,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
               var tableData:[[String]] = []
               let sectionTitle = defaults.array(forKey: "sectionTitle") as! [String]
               for title in sectionTitle{
-                  let section = defaults.array(forKey: title) as! [String]
+                  let sectionKey = title + "Section"
+                  let section = defaults.array(forKey: sectionKey) as! [String]
                   tableData.append(section)
               }
               defaults.set(tableData, forKey: "tableData")
