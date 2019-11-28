@@ -100,11 +100,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             //反映
              loadTable()
-             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             //sectionをtableviewから削除
             if section == []{
                 let indexSet = NSMutableIndexSet()
+                indexSet.add(indexPath.section)
                 tableView.deleteSections(indexSet as IndexSet, with: UITableView.RowAnimation.automatic)
+            }else{
+                tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             }
         }
     }
