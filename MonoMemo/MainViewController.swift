@@ -106,6 +106,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 indexSet.add(indexPath.section)
                 tableView.deleteSections(indexSet as IndexSet, with: UITableView.RowAnimation.automatic)
             }else{
+                //cellを削除
                 tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             }
         }
